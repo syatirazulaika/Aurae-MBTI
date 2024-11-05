@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class AuraeMBTI {
+    static Scanner aurae = new Scanner(System.in);
+
+        public static void main(String[] args) {
+            int introvert = 0, extrovert = 0;
+            int intuitive = 0, sensing = 0;
+            int thinking = 0, feeling = 0;
+            int judging = 0, perceiving = 0;
+    
+            System.out.println("────*Aurae*────");
+            System.out.println("Heyyoo!! get to know your MBTI here");
+            System.out.println("What's your name? ");
+            String name = aurae.nextLine();
+            System.out.println("hai " + name + " what you'd like to know? \n1) MBTI Test \n2) More about MBTI");
+            String pilihan = aurae.nextLine();

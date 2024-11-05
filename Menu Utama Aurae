@@ -15,3 +15,12 @@ public class AuraeMBTI {
             String name = aurae.nextLine();
             System.out.println("hai " + name + " what you'd like to know? \n1) MBTI Test \n2) More about MBTI");
             String pilihan = aurae.nextLine();
+
+            String[] introvertExtrovertQuestions = {
+                "1. Saya merasa lebih nyaman di tempat yang tenang dan hanya ada sedikit orang.",
+                "2. Saya merasa lebih bersemangat ketika bersama banyak orang.",
+                "1. Saya cenderung menghabiskan waktu untuk merenung daripada langsung berbicara.",
+                "2. Saya lebih suka berbagi ide atau pemikiran saya dengan orang lain.",
+                "1. Saya lebih suka waktu tenang untuk mengisi energi.",
+                "2. Saya merasa lebih terisi energinya saat berinteraksi dengan orang lain."
+            };

@@ -1,26 +1,124 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class AuraeMBTI {
-    static Scanner aurae = new Scanner(System.in);
+public class mbticuy {
+    static Scanner cotabim = new Scanner(System.in);
 
-        public static void main(String[] args) {
-            int introvert = 0, extrovert = 0;
-            int intuitive = 0, sensing = 0;
-            int thinking = 0, feeling = 0;
-            int judging = 0, perceiving = 0;
-    
-            System.out.println("────*Aurae*────");
-            System.out.println("Heyyoo!! get to know your MBTI here");
-            System.out.println("What's your name? ");
-            String name = aurae.nextLine();
-            System.out.println("hai " + name + " what you'd like to know? \n1) MBTI Test \n2) More about MBTI");
-            String pilihan = aurae.nextLine();
+    public static void main(String[] args) {
+        int introvert = 0, extrovert = 0;
+        int intuitive = 0, sensing = 0;
+        int thinking = 0, feeling = 0;
+        int judging = 0, perceiving = 0;
 
-            String[] introvertExtrovertQuestions = {
-                "1. Saya merasa lebih nyaman di tempat yang tenang dan hanya ada sedikit orang.",
-                "2. Saya merasa lebih bersemangat ketika bersama banyak orang.",
-                "1. Saya cenderung menghabiskan waktu untuk merenung daripada langsung berbicara.",
-                "2. Saya lebih suka berbagi ide atau pemikiran saya dengan orang lain.",
-                "1. Saya lebih suka waktu tenang untuk mengisi energi.",
-                "2. Saya merasa lebih terisi energinya saat berinteraksi dengan orang lain."
-            };
+        HashMap<String, String> mbtiDesc = new HashMap<>();
+        mbtiDesc.put("INTJ", "Arsitek <~> Pemikir imajinatif dan strategis yang menyiapkan rencana untuk segala hal");
+        mbtiDesc.put("INTP", "Ahli Logika <~> Penemu inovatif yang haus akan pengetahuan");
+        mbtiDesc.put("ENTJ", "Komandan <~> Pemimpin pemberani, imajinatif, dan determinasi tinggi");
+        mbtiDesc.put("ENTP", "Ahli Debat <~> Pemikir cerdas dan penuh rasa ingin tahu");
+        mbtiDesc.put("INFJ", "Advokat <~> Idealis yang tenang dan berjiwa spiritual");
+        mbtiDesc.put("INFP", "Mediator <~> Pribadi yang puitis, baik hati, dan altruistik");
+        mbtiDesc.put("ENFJ", "Protagonis <~> Pemimpin yang karismatik dan inspiratif");
+        mbtiDesc.put("ENFP", "Juru Kampanye <~> Jiwa yang antusias, kreatif, dan bebas bergaul");
+        mbtiDesc.put("ISTJ", "Ahli Logistik <~> Individu yang berpikiran praktis dan sangat bisa diandalkan");
+        mbtiDesc.put("ISFJ", "Pembela <~> Pelindung yang sangat berdedikasi dan ramah");
+        mbtiDesc.put("ESTJ", "Eksekutif <~> Administrator yang unggul dan tak tertandingi");
+        mbtiDesc.put("ESFJ", "Konsul <~> Pribadi yang penuh perhatian dan supel");
+        mbtiDesc.put("ISTP", "Virtuoso <~> Peneliti yang pemberani dan praktis");
+        mbtiDesc.put("ISFP", "Petualang <~> Seniman yang fleksibel dan memesona");
+        mbtiDesc.put("ESTP", "Pengusaha <~> Pribadi cerdas, energik, dan sangat peka");
+        mbtiDesc.put("ESFP", "Penghibur <~> Pribadi yang spontan, energik, dan antusias");
+
+        System.out.println("────*Aurae*────");
+        System.out.println("Heyyoo!! get to know your MBTI here");
+        System.out.println("What's your name? ");
+        String name = cotabim.nextLine();
+
+        System.out.println("Hai " + name + ", what you'd like to know?");
+        System.out.println("1) MBTI Test");
+        System.out.println("2) Learn more about MBTI");
+        System.out.print("Choose an option (1 or 2): ");
+        int pilihan = cotabim.nextInt();
+        cotabim.nextLine(); 
+
+        if (pilihan == 2) {
+            System.out.println("\nBerikut adalah penjelasan semua tipe MBTI:");
+            for (String key : mbtiDesc.keySet()) {
+                System.out.println(key + " - " + mbtiDesc.get(key));
+            }
+            return; 
+        }
+
+        System.out.println("Jawab pertanyaan berikut dengan memilih 1 atau 2:");
+
+        String[] introvertExtrovertQuestions = {
+            "1. Saya merasa lebih nyaman di tempat yang tenang dan hanya ada sedikit orang.",
+            "2. Saya merasa lebih bersemangat ketika bersama banyak orang.",
+            "1. Saya cenderung menghabiskan waktu untuk merenung daripada langsung berbicara.",
+            "2. Saya lebih suka berbagi ide atau pemikiran saya dengan orang lain.",
+            "1. Saya lebih suka waktu tenang untuk mengisi energi.",
+            "2. Saya merasa lebih terisi energinya saat berinteraksi dengan orang lain."
+        };
+
+        String[] intuitiveSensingQuestions = {
+            "1. Saya suka berfokus pada hal-hal abstrak dan ide-ide besar.",
+            "2. Saya lebih suka memikirkan hal-hal konkret dan praktis.",
+            "1. Saya lebih sering memikirkan masa depan dan berbagai kemungkinan.",
+            "2. Saya lebih sering memikirkan masa kini dan realitas.",
+            "1. Saya lebih tertarik pada teori daripada aplikasi langsung.",
+            "2. Saya lebih tertarik pada fakta yang bisa langsung diterapkan."
+        };
+
+        String[] thinkingFeelingQuestions = {
+            "1. Saya membuat keputusan berdasarkan logika dan analisis.",
+            "2. Saya membuat keputusan dengan mempertimbangkan perasaan orang lain.",
+            "1. Saya cenderung obyektif dan tegas saat mengambil keputusan.",
+            "2. Saya lebih empatik dan mempertimbangkan perasaan orang lain.",
+            "1. Saya lebih memprioritaskan kebenaran daripada menjaga perasaan orang lain.",
+            "2. Saya lebih suka menjaga harmoni daripada bersikeras pada kebenaran."
+        };
+
+        String[] judgingPerceivingQuestions = {
+            "1. Saya suka merencanakan segalanya dan memiliki struktur.",
+            "2. Saya suka spontanitas dan fleksibilitas dalam aktivitas saya.",
+            "1. Saya merasa nyaman dengan jadwal yang tetap.",
+            "2. Saya lebih suka menyesuaikan jadwal saya secara fleksibel.",
+            "1. Saya suka memiliki rencana yang jelas sebelum memulai sesuatu.",
+            "2. Saya lebih suka mengikuti alur dan menyesuaikan dengan situasi."
+        };
+
+        introvert += askQuestions(introvertExtrovertQuestions);
+        extrovert = 6 - introvert; 
+        intuitive += askQuestions(intuitiveSensingQuestions);
+        sensing = 6 - intuitive;
+        thinking += askQuestions(thinkingFeelingQuestions);
+        feeling = 6 - thinking;
+        judging += askQuestions(judgingPerceivingQuestions);
+        perceiving = 6 - judging;
+
+        String mbtiType = "";
+        mbtiType += (introvert > extrovert) ? "I" : "E";
+        mbtiType += (intuitive > sensing) ? "N" : "S";
+        mbtiType += (thinking > feeling) ? "T" : "F";
+        mbtiType += (judging > perceiving) ? "J" : "P";
+
+        System.out.println("\nTipe kepribadian MBTI Anda adalah: ");
+        System.out.println(name + " - " + mbtiType);
+        System.out.println(mbtiDesc.getOrDefault(mbtiType, "Deskripsi tidak tersedia"));
+    }
+
+        
+    public static int askQuestions(String[] questions) {
+        int score = 0;
+        for (int i = 0; i < questions.length; i += 2) {
+            System.out.println("\nPilih mana yang lebih cocok dengan Anda:");
+            System.out.println(questions[i]);
+            System.out.println(questions[i + 1]);
+            System.out.print("Jawaban (1 atau 2): ");
+            int answer = cotabim.nextInt();
+            if (answer == 1) {
+                score++;
+            }
+        }
+        return score;
+    }
+}

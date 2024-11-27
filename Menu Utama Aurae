@@ -1,15 +1,10 @@
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class mbticuy {
+public class AuraeMBTI {
     static Scanner cotabim = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int introvert = 0, extrovert = 0;
-        int intuitive = 0, sensing = 0;
-        int thinking = 0, feeling = 0;
-        int judging = 0, perceiving = 0;
-
         HashMap<String, String> mbtiDesc = new HashMap<>();
         mbtiDesc.put("INTJ", "Arsitek <~> Pemikir imajinatif dan strategis yang menyiapkan rencana untuk segala hal");
         mbtiDesc.put("INTP", "Ahli Logika <~> Penemu inovatif yang haus akan pengetahuan");
@@ -28,27 +23,44 @@ public class mbticuy {
         mbtiDesc.put("ESTP", "Pengusaha <~> Pribadi cerdas, energik, dan sangat peka");
         mbtiDesc.put("ESFP", "Penghibur <~> Pribadi yang spontan, energik, dan antusias");
 
-        System.out.println("────*Aurae*────");
+        System.out.println(centerText("----------------------------------------", 40));
+        System.out.println(centerText("────*Aurae*────", 40));
+        System.out.println(centerText("----------------------------------------", 40));
         System.out.println("Heyyoo!! get to know your MBTI here");
         System.out.println("What's your name? ");
         String name = cotabim.nextLine();
 
-        System.out.println("Hai " + name + ", what you'd like to know?");
-        System.out.println("1) MBTI Test");
-        System.out.println("2) Learn more about MBTI");
-        System.out.print("Choose an option (1 or 2): ");
-        int pilihan = cotabim.nextInt();
-        cotabim.nextLine(); 
+        boolean runApp = true;
+        while (runApp) {
+            System.out.println("\nHai " + name + ", what you'd like to know?");
+            System.out.println("1) MBTI Test");
+            System.out.println("2) Learn more about MBTI");
+            System.out.print("Choose an option (1 or 2): ");
+            int pilihan = cotabim.nextInt();
+            cotabim.nextLine(); // Membersihkan buffer setelah nextInt()
 
-        if (pilihan == 2) {
-            System.out.println("\nBerikut adalah penjelasan semua tipe MBTI:");
-            for (String key : mbtiDesc.keySet()) {
-                System.out.println(key + " - " + mbtiDesc.get(key));
+            if (pilihan == 2) {
+                System.out.println("\nBerikut adalah penjelasan semua tipe MBTI:");
+                for (String key : mbtiDesc.keySet()) {
+                    System.out.println(key + " - " + mbtiDesc.get(key));
+                }
+            } else if (pilihan == 1) {
+                mbtiTest(name, mbtiDesc);
             }
-            return; 
+
+            System.out.print("\nApakah Anda ingin mencoba fitur lain? (y/n): ");
+            String response = cotabim.nextLine().trim().toLowerCase();
+            runApp = response.equals("y");
         }
 
-        System.out.println("Jawab pertanyaan berikut dengan memilih 1 atau 2:");
+        System.out.println("\nThanks for hangin' with Aurae! See ya next time!");
+    }
+
+    public static void mbtiTest(String name, HashMap<String, String> mbtiDesc) {
+        int introvert = 0, extrovert = 0;
+        int intuitive = 0, sensing = 0;
+        int thinking = 0, feeling = 0;
+        int judging = 0, perceiving = 0;
 
         String[] introvertExtrovertQuestions = {
             "1. Saya merasa lebih nyaman di tempat yang tenang dan hanya ada sedikit orang.",
@@ -87,7 +99,7 @@ public class mbticuy {
         };
 
         introvert += askQuestions(introvertExtrovertQuestions);
-        extrovert = 6 - introvert; 
+        extrovert = 6 - introvert;
         intuitive += askQuestions(intuitiveSensingQuestions);
         sensing = 6 - intuitive;
         thinking += askQuestions(thinkingFeelingQuestions);
@@ -106,7 +118,6 @@ public class mbticuy {
         System.out.println(mbtiDesc.getOrDefault(mbtiType, "Deskripsi tidak tersedia"));
     }
 
-        
     public static int askQuestions(String[] questions) {
         int score = 0;
         for (int i = 0; i < questions.length; i += 2) {
@@ -115,10 +126,16 @@ public class mbticuy {
             System.out.println(questions[i + 1]);
             System.out.print("Jawaban (1 atau 2): ");
             int answer = cotabim.nextInt();
+            cotabim.nextLine(); 
             if (answer == 1) {
                 score++;
             }
         }
         return score;
+    }
+
+    public static String centerText(String text, int width) {
+        int padding = (width - text.length()) / 2;
+        return " ".repeat(Math.max(0, padding)) + text;
     }
 }

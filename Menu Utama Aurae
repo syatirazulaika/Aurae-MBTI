@@ -37,7 +37,7 @@ public class AuraeMBTI {
             System.out.println("2) Learn more about MBTI");
             System.out.print("Choose an option (1 or 2): ");
             int pilihan = cotabim.nextInt();
-            cotabim.nextLine(); // Membersihkan buffer setelah nextInt()
+            cotabim.nextLine(); 
 
             if (pilihan == 2) {
                 System.out.println("\nBerikut adalah penjelasan semua tipe MBTI:");
